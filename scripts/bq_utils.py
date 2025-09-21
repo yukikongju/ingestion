@@ -1,4 +1,5 @@
 from git import Repo
+from google.cloud import bigquery
 
 def get_current_branch(path=".") -> str:
     repo = Repo(path)
@@ -24,3 +25,6 @@ def get_bigquery_table_path(project_id: str, dataset_id: str, table_id: str) -> 
     """
     env = get_env_name_from_branch()
     return f"{project_id}.{dataset_id}_{env}.{table_id}"
+
+def get_bigquery_client() -> bigquery.Client :
+    return bigquery.Client()
