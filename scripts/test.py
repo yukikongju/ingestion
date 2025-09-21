@@ -5,8 +5,9 @@ def main():
     client = get_bigquery_client()
     table_path = get_bigquery_table_path(project_id='relax-melodies-android', dataset_id='ua_extract', table_id='facebook_ads_complete')
     query = f"""
-    select * from {table_path}
-    where date = '2025-09-01'
+    SELECT * from `{table_path}`
+    where
+        date = '2025-09-01'
     """
 
     print(f"Query from {table_path}...")

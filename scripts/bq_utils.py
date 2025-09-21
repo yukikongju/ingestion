@@ -1,5 +1,6 @@
 from git import Repo
 from google.cloud import bigquery
+import pandas as pd
 
 def get_current_branch(path=".") -> str:
     repo = Repo(path)

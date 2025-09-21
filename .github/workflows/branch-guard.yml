@@ -1,0 +1,28 @@
+name: Branch Guard
+
+on:
+  pull_request:
+    branches:
+      - staging
+      - prod
+
+jobs:
+  enforce:
+    runs-on: ubuntu_latest
+    steps:
+      - name: Check allowed PR source
+        run: |
+          echo "Base branch: ${{ github.base_ref }}"
+          echo "Head branch: ${{ github.head_ref }}"
+
+          if [[ "${{ github.base_ref }}" == "staging" && "${{ github.head_ref }}" != "dev" ]]; then
+            echo "❌ Only dev → staging merges are allowed"
+            exit 1
+          fi
+
+          if [[ "${{ github.base_ref }}" == "prod" && "${{ github.head_ref }}" != "staging" ]]; then
+            echo "❌ Only staging → prod merges are allowed"
+            exit 1
+          fi
+
+
