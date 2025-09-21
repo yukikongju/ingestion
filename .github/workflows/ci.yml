@@ -1,0 +1,21 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - staging
+      - prod
+    push:
+      branches:
+        - dev
+        - staging
+        - prod
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+
