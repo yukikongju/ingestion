@@ -1,5 +1,11 @@
 pipeline {
-    agent any
+    // agent any
+    agent {
+        docker {
+            image 'python:3.11-slim'
+        }
+    }
+
 
     stages {
         stage('Checkout') {
