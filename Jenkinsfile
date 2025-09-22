@@ -1,0 +1,56 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                // sh 'pytest tests'
+		echo "Test"
+            }
+        }
+
+        stage('Deploy to Dev') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                // sh './deploy/deploy_dev.sh'
+		echo "dev"
+            }
+        }
+
+        stage('Deploy to Staging') {
+            when {
+                branch 'staging'
+            }
+            steps {
+                // sh './deploy/deploy_staging.sh'
+		echo "staging"
+            }
+        }
+
+        stage('Deploy to Prod') {
+            when {
+                branch 'main'
+            }
+            steps {
+                // input message: "Approve Production Deploy?"
+                // sh './deploy/deploy_prod.sh'
+		echo "prod"
+            }
+        }
+    }
+}
+
