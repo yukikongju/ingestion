@@ -9,6 +9,10 @@ jenkins_setup:
 	#   -v /fastdisk:/var/jenkins_home \
 	#   jenkins/jenkins:lts
 	docker-compose up -d
+	# --- Python inside jenkins docker
+	docker exec -it -u root jenkins bash
+	apt-get update && apt-get install -y python3 python3-pip exit
+	docker restart jenkins
 	docker start jenkins
 	docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 	# http://localhost:8080
