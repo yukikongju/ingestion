@@ -18,6 +18,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // sh 'pip install -r requirements.txt'
+		sh 'chmod +x deploy/*.sh'
                 sh 'deploy/installation.sh'
             }
         }
