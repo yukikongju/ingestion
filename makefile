@@ -16,4 +16,7 @@ jenkins_setup:
 	docker rm jenkins
 	docker volume rm jenkins_home # to remove admin variable name
 
+	# In JENKINS
+	# Download the following plugins: "Docker Pipeline", "Docker"
+
 
