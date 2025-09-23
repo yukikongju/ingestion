@@ -1,6 +1,6 @@
 pipeline {
-    agent none
-    // agent any
+    // agent none
+    agent any
     // agent {
     //     docker {
     //         image 'python:3.11-slim'
@@ -19,8 +19,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // sh 'pip install -r requirements.txt'
-		// sh 'chmod +x deploy/*.sh'
-                // sh 'deploy/installation.sh'
+		sh 'chmod +x infra/jenkins/scripts/*.sh'
 		sh './infra/jenkins/scripts/installation.sh'
             }
         }
@@ -62,6 +61,12 @@ pipeline {
 		echo "prod"
             }
         }
+    }
+
+    post {
+	// always { echo 'Pipeline completed!' }
+	success { echo 'Pipeline completed with success!' }
+	failure { echo 'Pipeline failed.' }
     }
 }
 
