@@ -1,6 +1,6 @@
 pipeline {
-    agent none
-    // agent any
+    // agent none
+    agent any
     // agent {
     //     docker {
     //         image 'python:3.11-slim'
@@ -65,8 +65,8 @@ pipeline {
     }
 
     post {
-	always { echo 'Pipeline completed!' }
-	success { echo 'Pipeline succeeded!' }
+	// always { echo 'Pipeline completed!' }
+	success { echo 'Pipeline completed with success!' }
 	failure { echo 'Pipeline failed.' }
     }
 }
