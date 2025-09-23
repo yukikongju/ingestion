@@ -1,4 +1,16 @@
-python3 -m venv venv
+#!/usr/bin/env bash
+set -e
+
+# Create virtual environment if it doesn't exist
+if [ ! -d "venv" ]; then
+  python3 -m venv venv
+fi
+
+# Always activate it
 source venv/bin/activate
-pip3 install --upgrade pip
-pip3 install -r requirements.txt
+
+# Upgrade pip inside the venv (safe!)
+python -m pip install --upgrade pip
+
+# Install requirements using venv’s pip
+pip install -r requirements.txt
