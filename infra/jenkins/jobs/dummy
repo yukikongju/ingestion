@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                // sh 'pip install -r requirements.txt'
+		sh 'chmod +x infra/jenkins/scripts/*.sh'
+		sh './infra/jenkins/scripts/installation.sh'
+            }
+        }
+
+	stage('Run Script') {
+	    python3 scripts/dummy.py
+	}
+
+    }
+}
