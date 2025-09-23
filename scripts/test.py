@@ -1,3 +1,4 @@
+import sys
 from bq_utils import get_bigquery_client, get_bigquery_table_path
 
 
@@ -13,6 +14,8 @@ def main():
     print(f"Query from {table_path}...")
     query_job = client.query(query)
     rows = query_job.result()
+    sys.exit(1) # TOREMOVE: dummy failure to test jenkins
+
 
 
 if __name__ == "__main__":
