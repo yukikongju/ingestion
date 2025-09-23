@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+    agent none
+    // agent any
     // agent {
     //     docker {
     //         image 'python:3.11-slim'
@@ -18,7 +19,9 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // sh 'pip install -r requirements.txt'
-                sh 'deploy/installation.sh'
+		// sh 'chmod +x deploy/*.sh'
+                // sh 'deploy/installation.sh'
+		sh './infra/jenkins/scripts/installation.sh'
             }
         }
 
