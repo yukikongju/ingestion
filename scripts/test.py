@@ -15,5 +15,6 @@ def main():
     rows = query_job.result()
 
 
+
 if __name__ == "__main__":
     main()
