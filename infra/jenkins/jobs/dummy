@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    triggers {
+	// Schedule to run at 4 am everyday
+	// cron 'H 4 * * *'
+
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                // sh 'pip install -r requirements.txt'
+		sh 'chmod +x infra/jenkins/scripts/*.sh'
+		sh './infra/jenkins/scripts/installation.sh'
+            }
+        }
+
+	stage('Run Script') {
+	    python3 scripts/dummy.py
+	}
+
+    }
+}
