@@ -1,10 +1,11 @@
 pipeline {
     agent any
-    // triggers {
+    triggers {
 	// Schedule to run at 4 am everyday
 	// cron 'H 4 * * *'
-
-    // }
+	// Schedule to run every minute
+	* * * * *
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -21,7 +22,9 @@ pipeline {
         }
 
 	stage('Run Script') {
-	    python3 scripts/dummy.py
+	    steps {
+		python3 scripts/dummy.py
+	    }
 	}
 
     }
