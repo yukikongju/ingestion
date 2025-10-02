@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: extract
+    schema: "ua_extract_{{ target.name }}"
+    tables:
+      - name: fake_data
