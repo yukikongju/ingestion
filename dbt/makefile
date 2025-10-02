@@ -6,5 +6,9 @@ run_profile:
 	# dbt run --profiles-dir ./.dbt --target prod
 	#
 
+generate_docs:
+	dbt docs generate --profiles-dir ./.dbt
+	dbt docs serve --port 9000
+
 verify_env:
 	env | grep DBT
