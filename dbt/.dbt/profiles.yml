@@ -12,4 +12,14 @@ ingestion:
       project: "{{ env_var('DBT_GCP_PROJECT') }}"
       threads: 2
       type: bigquery
-
+    prod:
+      dataset: "{{ env_var('DBT_GCP_DATASET') }}"
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: "{{ env_var('DBT_GCP_KEYFILE') }}"
+      location: US
+      method: service-account
+      priority: interactive
+      project: "{{ env_var('DBT_GCP_PROJECT') }}"
+      threads: 2
+      type: bigquery
