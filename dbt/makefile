@@ -6,6 +6,7 @@ run_profile:
 	# dbt run --profiles-dir ./.dbt --target prod
 	#
 
+
 debug:
 	dbt debug
 

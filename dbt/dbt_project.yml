@@ -41,3 +41,4 @@ models:
 seeds:
   ingestion:
     +schema: "mappings"
+      +schema: "staging_{{ target.name }}"
