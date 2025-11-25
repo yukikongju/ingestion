@@ -3,7 +3,7 @@
 {% macro create_fake_data() %}
 
 {% set sql %}
-CREATE TABLE IF NOT EXISTS `relax-melodies-android`.`ua_extract_{{ target.name }}.fake_data2` (
+CREATE TABLE IF NOT EXISTS `{{ target.database }}`.`ua_extract_{{ target.name }}.fake_data2` (
     day date NOT NULL, 
     network string NOT null, 
     platform string not null, 
