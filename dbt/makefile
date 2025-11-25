@@ -6,6 +6,10 @@ run_profile:
 	# dbt run --profiles-dir ./.dbt --target prod
 	#
 
+
+debug:
+	dbt debug
+
 generate_docs:
 	dbt docs generate --profiles-dir ./.dbt
 	dbt docs serve --port 9000

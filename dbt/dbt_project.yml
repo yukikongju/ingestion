@@ -36,4 +36,9 @@ models:
     #   +materialized: view
     staging:
       +materialized: view
+      +schema: "staging_{{ target.name }}" # ua_staging_ENV
+
+seeds:
+  ingestion:
+    +schema: "mappings"
       +schema: "staging_{{ target.name }}"
