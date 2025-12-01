@@ -1,10 +1,25 @@
+import logging
+import pandas as pd
+
 from abc import ABC
+from collections.abc import Callable
 from pydantic import BaseModel
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Union
+
 
 #  TODO: define Data with pydantic
 #  type Data = List[Dict[str, Any]] # (format_type, data)
 
+#############
+#  CONFIGS  #
+#############
+
+
+
+
+#############
+#  CLASSES  #
+#############
 
 class Extractor(ABC):
 
@@ -60,6 +75,20 @@ class Uploader(ABC):
         Upload data to database/file
         """
         pass
+
+##########
+#  RUNS  #
+##########
+
+def extraction_run(func: Callable[[Union[str, pd.Timestamp], Union[str, pd.Timestamp]], Any], 
+        start_date: Union[str, pd.Timestamp ], end_date: Union[str, pd.Timestamp]) -> Any:
+    func(start_date, end_date)
+    logging.info(f"---- Extraction: {func.__qualname__}")
+
+
+##########
+#  JOBS  #
+##########
 
 class Job(ABC):
 
